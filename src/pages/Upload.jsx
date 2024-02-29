@@ -3,6 +3,8 @@ import * as XLSX from 'xlsx';
 import { toast } from 'react-toastify';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 
 
@@ -31,7 +33,7 @@ export default function Upload() {
         setExcelFile(null);
       }
     } else {
-      console.log('Por favor, selecione seu arquivo');
+      //console.log('Por favor, selecione seu arquivo');
     }
   }
   
@@ -56,18 +58,33 @@ export default function Upload() {
     <Card border="primary" style={{ width: '70rem' }}>
         <Card.Header> <h1>Registro do Inventário</h1></Card.Header>
         <Card.Body>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Label>Código do Museu*</Form.Label>
-            <Form.Control as="textarea" rows={1} />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Label>CPF do Responsável*</Form.Label>
-            <Form.Control as="textarea" rows={1} />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Label>Nome do Responsável*</Form.Label>
-            <Form.Control as="textarea" rows={1} />
-          </Form.Group>
+                <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+                <Form.Label column sm="2">
+                  Código do Museu:
+                </Form.Label>
+                <Col sm="10">
+                  <Form.Control plaintext readOnly defaultValue="1-20127-0000-0000" />
+                </Col>
+                </Form.Group>
+
+                <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+                <Form.Label column sm="2">
+                  Responsável:
+                </Form.Label>
+                <Col sm="10">
+                  <Form.Control plaintext readOnly defaultValue="Thiago Campos" />
+                </Col>
+                </Form.Group>
+
+                <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+                <Form.Label column sm="2">
+                  CPF:
+                </Form.Label>
+                <Col sm="10">
+                  <Form.Control plaintext readOnly defaultValue="123.456.789-00" />
+                </Col>
+                </Form.Group>
+
           <form className="form-group custom-form" onSubmit={handleFileSubmit}>
             <input type="file" className="form-control" required onChange={handleFile} />
             <button type="submit" className="btn btn-primary mt-3">Mostrar Planilha</button>
